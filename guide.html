@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en" class="theme-dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>r/factorymustgrow — Community Guide</title>
+<link rel="icon" href="icon.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --blue: #3B82F6;
+    --indigo: #6366F1;
+    --green: #22C55E;
+    --amber: #F59E0B;
+    --red: #EF4444;
+    --bg-canvas: #030303;
+    --bg-body: #0e0e0e;
+    --bg-post: #1a1a1b;
+    --bg-hover: #222223;
+    --border: #343536;
+    --text: #d7dadc;
+    --text-dim: #818384;
+    --text-link: #4fbcff;
+  }
+
+  body {
+    background: var(--bg-canvas);
+    color: var(--text);
+    font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  a { color: var(--text-link); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  .top-nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--bg-post);
+    border-bottom: 1px solid var(--border);
+    height: 48px;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    gap: 16px;
+  }
+
+  .nav-logo {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  .nav-logo a { color: inherit; }
+
+  .nav-sub {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  .guide-container {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 32px 20px 80px;
+  }
+
+  .guide-header {
+    margin-bottom: 40px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .guide-header h1 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--blue);
+    margin-bottom: 8px;
+  }
+
+  .guide-header .subtitle {
+    font-size: 16px;
+    color: var(--text-dim);
+  }
+
+  h2 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--green);
+    margin-top: 40px;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  h3 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--blue);
+    margin-top: 24px;
+    margin-bottom: 8px;
+  }
+
+  p { margin-bottom: 12px; }
+
+  .rule-card {
+    background: var(--bg-post);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+  }
+
+  .rule-card .rule-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+    color: var(--blue);
+    font-size: 13px;
+    margin-bottom: 4px;
+  }
+
+  .rule-card .rule-name {
+    font-weight: 700;
+    font-size: 16px;
+    margin-bottom: 6px;
+  }
+
+  .rule-card .rule-desc {
+    color: var(--text-dim);
+    font-size: 14px;
+  }
+
+  .qc-section {
+    background: var(--bg-post);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 20px;
+    margin: 16px 0;
+  }
+
+  .qc-section h4 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--amber);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .check-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 14px;
+  }
+
+  .check-item:last-child { border-bottom: none; }
+
+  .check-status {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 3px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .check-status.pass {
+    background: rgba(34, 197, 94, 0.15);
+    color: var(--green);
+  }
+
+  .check-name { color: var(--text); }
+  .check-desc { color: var(--text-dim); font-size: 13px; margin-top: 2px; }
+
+  pre {
+    background: #111;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 16px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    line-height: 1.5;
+    overflow-x: auto;
+    margin: 12px 0;
+    color: var(--text);
+  }
+
+  code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    background: rgba(59, 130, 246, 0.1);
+    padding: 2px 6px;
+    border-radius: 3px;
+    color: var(--blue);
+  }
+
+  ul, ol {
+    margin: 8px 0 16px 20px;
+  }
+
+  li { margin-bottom: 6px; }
+
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    color: var(--text-dim);
+    margin-bottom: 16px;
+  }
+
+  .back-link:hover { color: var(--text); text-decoration: none; }
+
+  .highlight {
+    background: rgba(245, 158, 11, 0.1);
+    border-left: 3px solid var(--amber);
+    padding: 12px 16px;
+    margin: 16px 0;
+    font-size: 14px;
+  }
+
+  .footer {
+    margin-top: 48px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    text-align: center;
+    font-size: 13px;
+    color: var(--text-dim);
+  }
+
+  .footer a { color: var(--text-dim); }
+  .footer a:hover { color: var(--text); }
+</style>
+</head>
+<body>
+
+<nav class="top-nav">
+  <span class="nav-logo"><a href="index.html">r/factorymustgrow</a></span>
+  <span style="color:var(--text-dim);font-size:13px">/</span>
+  <span class="nav-sub">Community Guide</span>
+</nav>
+
+<div class="guide-container">
+
+  <a href="index.html" class="back-link">&larr; Back to the factory floor</a>
+
+  <div class="guide-header">
+    <h1>// COMMUNITY GUIDE</h1>
+    <div class="subtitle">How r/factorymustgrow operates — moderation, standards, and how we interact.</div>
+  </div>
+
+  <p>Engineers building software as if it were Factorio. We share our production alpha like we are Taiichi Ohno. The factory must grow.</p>
+
+  <p>This community is ~80% software factory content — CI/CD pipelines, automated code review, deployment systems, infrastructure as code, throughput reports, post-mortems — and ~20% Factorio-inspired memes that hit different when you've also debugged a deploy pipeline at 2am.</p>
+
+  <!-- ═══ RULES ═══ -->
+  <h2>// THE RULES</h2>
+
+  <div class="rule-card">
+    <div class="rule-num">RULE 01</div>
+    <div class="rule-name">Production reports, not press releases</div>
+    <div class="rule-desc">Share real production data, post-mortems, and throughput numbers. Not marketing copy, not LinkedIn posts, not corporate announcements. If it reads like a press release, it doesn't pass QC.</div>
+  </div>
+
+  <div class="rule-card">
+    <div class="rule-num">RULE 02</div>
+    <div class="rule-name">Link to your blueprint too</div>
+    <div class="rule-desc">Share the configs, the repo, the architecture diagram. "Look what I built" is fine. "Here's how I built it and here's the repo" is what makes this sub compound in value. The blueprint is the alpha.</div>
+  </div>
+
+  <div class="rule-card">
+    <div class="rule-num">RULE 03</div>
+    <div class="rule-name">Spaghetti factories are factories</div>
+    <div class="rule-desc">No elitism. Everyone starts somewhere. A bash script that deploys your side project is a factory. A messy Factorio base that produces science is a factory. Gatekeeping gets flagged by QC.</div>
+  </div>
+
+  <div class="rule-card">
+    <div class="rule-num">RULE 04</div>
+    <div class="rule-name">Open a PR to change moderation</div>
+    <div class="rule-desc">Our moderation standards are <a href="https://github.com/continuedev/factorymustgrow">source-controlled on GitHub</a>. Want to change a rule? Want to adjust a QC check? Open a pull request. This is a factory — we version-control everything, including governance.</div>
+  </div>
+
+  <div class="rule-card">
+    <div class="rule-num">RULE 05</div>
+    <div class="rule-name">The factory must grow</div>
+    <div class="rule-desc">Share what you learned, not just what you built. Each shared blueprint makes the next builder faster. The sub's value compounds when people open-source their factory designs.</div>
+  </div>
+
+  <!-- ═══ HOW MODERATION WORKS ═══ -->
+  <h2>// HOW MODERATION WORKS</h2>
+
+  <p>This subreddit runs itself. Moderation is automated quality control, not human gatekeeping.</p>
+
+  <p>We use <strong>QC checks</strong> — markdown files in our <a href="https://github.com/continuedev/factorymustgrow/.continue/checks">GitHub repo</a> that define what "good" looks like. An AI reads each post against these checks and flags quality control issues. Humans review the flagged items. Everything else flows through.</p>
+
+  <div class="highlight">Think of it like a Factorio production line: items (posts) move along the belt. QC inserters pull out items that don't meet spec. Everything else ships. The factory doesn't stop to inspect every item — it catches the defects.</div>
+
+  <h3>The active QC checks</h3>
+
+  <div class="qc-section">
+    <h4>Quality Control Pipeline</h4>
+    <div class="check-item">
+      <span class="check-status pass">ACTIVE</span>
+      <div>
+        <div class="check-name"><strong>Voice and Tone</strong></div>
+        <div class="check-desc">Warm, obsessive, not corporate. Production reports, not press releases.</div>
+      </div>
+    </div>
+    <div class="check-item">
+      <span class="check-status pass">ACTIVE</span>
+      <div>
+        <div class="check-name"><strong>Production Alpha</strong></div>
+        <div class="check-desc">Link to your blueprint too. Concrete over abstract. Failures are alpha too.</div>
+      </div>
+    </div>
+    <div class="check-item">
+      <span class="check-status pass">ACTIVE</span>
+      <div>
+        <div class="check-name"><strong>Factory Bridge</strong></div>
+        <div class="check-desc">80/20 software/Factorio balance. Both welcome, software primary.</div>
+      </div>
+    </div>
+    <div class="check-item">
+      <span class="check-status pass">ACTIVE</span>
+      <div>
+        <div class="check-name"><strong>Visual Identity</strong></div>
+        <div class="check-desc">Blueprint blue, terminal green, warm amber on dark charcoal.</div>
+      </div>
+    </div>
+    <div class="check-item">
+      <span class="check-status pass">ACTIVE</span>
+      <div>
+        <div class="check-name"><strong>Automation Standards</strong></div>
+        <div class="check-desc">Bots are factory systems. Moderation is quality control.</div>
+      </div>
+    </div>
+  </div>
+
+  <p>Each check is a markdown file that describes the standard, what to flag, and what to leave alone. They're readable, version-controlled, and open for PRs.</p>
+
+  <h3>What happens when a post gets flagged</h3>
+
+  <p>QC doesn't punish — it helps you ship. When a post gets flagged, you'll get a friendly QC comment explaining which check it didn't pass and why. Then it'll give you this:</p>
+
+  <div class="qc-section" style="margin:20px 0">
+    <h4>Paste this into your favorite coding agent</h4>
+    <pre style="margin:8px 0;background:#0a0a0a;border-color:var(--green);cursor:pointer;position:relative" onclick="navigator.clipboard.writeText(this.querySelector('code').textContent).then(()=>{this.querySelector('.copy-flash').style.opacity=1;setTimeout(()=>this.querySelector('.copy-flash').style.opacity=0,1200)})"><span class="copy-flash" style="position:absolute;top:8px;right:12px;font-size:11px;color:var(--green);opacity:0;transition:opacity 0.3s">Copied!</span><code style="background:none;padding:0;color:var(--green)">Help me improve my post based on the r/FactoryMustGrow quality
+control standards. Clone https://github.com/continuedev/factorymustgrow
+and run the checks in .continue/checks/ against my draft.
+Guide me through fixing anything that doesn't pass, and explain
+why each standard matters so I learn to write in line with the
+community voice.</code></pre>
+    <p style="font-size:13px;color:var(--text-dim);margin:8px 0 0">Works with Claude Code, Cursor, Continue, Copilot, Windsurf — any agent that can clone a repo and read markdown.</p>
+  </div>
+
+  <p>Your agent will pull our QC checks, run them against your draft, and walk you through adjusting anything that doesn't pass. It's not about gatekeeping — it's about helping you write in the voice of the community. The checks explain <em>why</em> each standard exists, so you learn the factory's conventions, not just comply with rules.</p>
+
+  <p>The flow:</p>
+
+  <ol>
+    <li>You get a QC flag with a kind explanation of what didn't pass.</li>
+    <li>You paste the prompt into your coding agent with your draft.</li>
+    <li>The agent clones the repo, reads the checks, and guides you through revisions — explaining why each standard matters.</li>
+    <li>You update your post. It passes QC. The factory grows.</li>
+  </ol>
+
+  <p>If the flag is wrong, you can dispute it — and if the check itself is bad, you can <a href="https://github.com/continuedev/factorymustgrow">PR a fix to the check</a>. The QC system improves the same way the factory does: through iteration.</p>
+
+  <div class="highlight">We want all people <em>and</em> agents to be part of this community. Whether you write your posts by hand or your AI drafts them, the same QC standards apply. The checks don't care who wrote it — they care that it ships production alpha.</div>
+
+  <h3>Changing the rules</h3>
+
+  <p>The moderation standards live at <a href="https://github.com/continuedev/factorymustgrow">github.com/continuedev/factorymustgrow</a>. Everything is in <code>.continue/checks/</code>.</p>
+
+  <p>To change a rule or add a check:</p>
+
+<pre>
+# Fork the repo
+git clone https://github.com/continuedev/factorymustgrow
+cd factorymustgrow
+
+# Edit or add a check
+vim .continue/checks/your-new-check.md
+
+# Open a PR
+gh pr create --title "Add check for [whatever]"
+</pre>
+
+  <p>The community reviews the PR. If it passes, the check goes live. This is how a factory evolves its own QC standards.</p>
+
+  <!-- ═══ HOW WE INTERACT ═══ -->
+  <h2>// HOW WE INTERACT</h2>
+
+  <h3>Posting standards</h3>
+
+  <ul>
+    <li><strong>Use the right flair.</strong> Blueprint for guides, Throughput for metrics, Bottleneck for help, Spaghetti for experiments, Alert for post-mortems. Flair is how the factory sorts items on the belt.</li>
+    <li><strong>Be specific.</strong> "I made my pipeline faster" is noise. "I cut deploy time from 12 min to 90 sec by parallelizing test stages — here's the config" is production alpha.</li>
+    <li><strong>Link to your blueprint.</strong> If you built something, share the repo, the config, the architecture diagram. The blueprint is more valuable than the screenshot.</li>
+    <li><strong>Failures are welcome.</strong> Post-mortems are some of the highest-value content. "Here's what I tried that didn't work and why" saves the next builder time.</li>
+  </ul>
+
+  <h3>Commenting standards</h3>
+
+  <ul>
+    <li><strong>Add to the blueprint.</strong> If someone shares a config and you've solved the same problem differently, share your approach. The best threads are production alpha stacking on production alpha.</li>
+    <li><strong>Ask specific questions.</strong> "Why did you choose X over Y?" is better than "nice post." Specific questions invite specific answers.</li>
+    <li><strong>Be direct, not harsh.</strong> "This won't scale because X — here's what I'd try instead" is good. "This is wrong" with no alternative is not.</li>
+    <li><strong>Spaghetti is valid.</strong> Don't trash someone's working system because it's not elegant. If it produces output, it's a factory.</li>
+  </ul>
+
+  <h3>What doesn't belong</h3>
+
+  <ul>
+    <li><strong>Press releases.</strong> If you're a company announcing a product, this isn't the venue. If you're an engineer at that company sharing how you built it — with configs and real numbers — welcome.</li>
+    <li><strong>Generic advice.</strong> "Just use Docker" or "have you tried Kubernetes" without specifics. This sub is about the specific decisions, not the category.</li>
+    <li><strong>Gatekeeping.</strong> Telling someone their factory isn't a "real" factory. Spaghetti factories are factories.</li>
+  </ul>
+
+  <!-- ═══ THE PHILOSOPHY ═══ -->
+  <h2>// THE PHILOSOPHY</h2>
+
+  <p>Taiichi Ohno didn't keep the Toyota Production System secret. He wrote books about it. He invited competitors to tour the factory floor. His insight: sharing how you build doesn't eliminate your advantage — it compounds everyone's capability, including your own.</p>
+
+  <p>That's the model here. Share your production alpha openly. Link to your blueprint. Post your post-mortems. The factory must grow — and it grows fastest when every builder on the line can see how every other builder solved the same problem.</p>
+
+  <p>This subreddit runs itself. The checks are open-source. The moderation is automated. The rules are version-controlled. If you want to change how the factory works, open a PR.</p>
+
+  <div class="footer">
+    <a href="https://github.com/continuedev/factorymustgrow">github.com/continuedev/factorymustgrow</a>
+    <br>
+    <span style="margin-top:4px;display:inline-block">The factory must grow.</span>
+  </div>
+
+</div>
+
+</body>
+</html>
