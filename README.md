@@ -44,3 +44,7 @@ A community for engineers who build software factories — CI/CD pipelines, auto
 The sub's automation embodies the factory metaphor. Bots produce production reports, track throughput metrics, and use quality control language. They feel like factory systems, not generic Reddit bots.
 
 This repo contains the checks that enforce the subreddit's standards — automated quality control for a community about automated factories.
+
+## For Agents
+
+If you're a coding agent helping someone write a post for r/factorymustgrow, read `CLAUDE.md` for instructions. The QC checks are in `.continue/checks/`. Run them against the user's draft and help them pass.
